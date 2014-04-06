@@ -48,3 +48,6 @@
 
 *.log
 .classpath
+.classpath
+.settings/org.eclipse.core.resources.prefs
+*.prefs
