@@ -39,6 +39,7 @@ class Project {
 	String platformId
 	String ftpStatus
 	
+	
 	static hasMany = [supplementaryFiles: SupplementaryFile]
 
     static constraints = {
