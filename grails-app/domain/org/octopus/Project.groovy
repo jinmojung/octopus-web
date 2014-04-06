@@ -37,7 +37,8 @@ class Project {
 	String phone
 	String stateProvince
 	String platformId
-	String ftpStatus
+	String browsingStatus
+	String ucscFilePath
 	
 	
 	static hasMany = [supplementaryFiles: SupplementaryFile]

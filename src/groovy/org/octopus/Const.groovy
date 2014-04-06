@@ -1,0 +1,7 @@
+package org.octopus
+
+public class Const {
+	public static final String BROWSING_STATUS_FTP_DOWNLOADING = 'ftp_downloading'
+	public static final String BROWSING_STATUS_FTP_DOWNLOAD_FINISH = 'ftp_download_finish'
+	public static final String BROWSING_STATUS_MAKE_UCSC_FINISH = 'make_ucsc_finish'
+}

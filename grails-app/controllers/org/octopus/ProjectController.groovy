@@ -8,6 +8,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ProjectController {
 
+	def grailsApplication
+	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -103,7 +105,33 @@ class ProjectController {
     }
 	
 	def search(){
-		def projects = Project.findAllByTitleLikeOrSourceNameLike("%${params.keyword}%","%${params.keyword}%")
-		respond projects
+		def projectList = []
+		if(params.keyword != null && params.keyword != ''){
+			projectList = Project.findAllByTitleLikeOrSourceNameLike("%${params.keyword}%","%${params.keyword}%")
+		}
+		println projectList.size()
+		render(view: "search", model: [projectList: projectList])
+	}
+	def browsing(){
+		println params
+	}
+	
+	def getUcscFile(){
+		def ucscDir = grailsApplication.config.ucsc.dir
+		def filename = 'K4me3_mm9_MGp6_GSE48685.ucsc.bigWig'
+		String userAgent = request.getHeader("User-Agent");
+		if (userAgent != null && userAgent.indexOf("MSIE 5.5") > -1) { // MS IE 5.5 이하
+		  response.setHeader("Content-Disposition", "filename=${filename};");
+		} else if (userAgent != null && userAgent.indexOf("MSIE") > -1) { // MS IE (보통은 6.x 이상 가정)
+		  response.setHeader("Content-Disposition", "attachment; filename=${filename};");
+		} else { // 모질라나 오페라
+		  response.setHeader("Content-Disposition", "attachment; filename=${filename};");
+		}
+
+		File attachFile = new File("${ucscDir}${filename}")
+		response.setContentLength((int)attachFile.length())
+		OutputStream out = response.getOutputStream()
+		out.write(attachFile.getBytes())
+		out.close()
 	}
 }

@@ -94,12 +94,14 @@ environments {
 		ftp.dir = 'D:\\ftp\\'
 		ftp.temp.dir = 'D:\\temp\\'
 		move.cmd = 'cmd /c move'
+		ucsc.dir = 'D:\\ucsc\\'
     }
     production {
         grails.logging.jul.usebridge = false
 		ftp.dir = '/home/octopus/ftpDown/'
 		ftp.temp.dir = '/home/octopus/temp/'
 		move.cmd = 'mv'
+		ucsc.dir = '/home/octopus/ucsc/'
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

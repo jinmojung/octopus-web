@@ -9,12 +9,13 @@
 		</script>
 	</head>
 	<body>
-	<div>
-	<g:formRemote update="result" url='[controller: "project", action:"search"]' name="form" after="showSearching()">
-		<g:textField name="keyword"/>
-		<g:submitButton name="search"/>
-	</g:formRemote>
-	<div id="result"></div>
-	</div>
+	<div id="align" style="width: 100%;text-align: center;">  
+	<div id="content" style="height: 50px;margin-top: 100px;">  
+		<g:form controller="project" action="search">
+			<input id="keyword" name="keyword" type="text" autocomplete="off" value="" style="height: 30px;width: 400px;font-size: 16px;">
+			<g:submitButton name="search" style="height: 30px;width: 100px;font-size: 16px;"/>
+		</g:form>
+	</div>  
+	</div> 
 	</body>
 </html>

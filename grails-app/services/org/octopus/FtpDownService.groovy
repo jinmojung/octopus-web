@@ -1,5 +1,7 @@
 package org.octopus
 
+import grails.transaction.Transactional;
+
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient
 import org.apache.commons.net.ftp.FTPFile
@@ -9,9 +11,10 @@ class FtpDownService {
 	static transactional = false
 	def grailsApplication
 	
+	@Transactional
 	def ftpDownFromProject(Project project){
 		def fileList = project.supplementaryFiles
-		project.ftpStatus = "downloading"
+		project.browsingStatus = Const.BROWSING_STATUS_FTP_DOWNLOADING
 		project.save(flush:true)
 		fileList.each{
 			if(it.fileTypeResource.indexOf("SRA") != -1){
@@ -60,7 +63,7 @@ class FtpDownService {
 				}
 			}
 		}
-		project.ftpStatus = "finish"
+		project.browsingStatus = Const.BROWSING_STATUS_FTP_DOWNLOAD_FINISH
 		project.save(flush:true)
 	}
 	
