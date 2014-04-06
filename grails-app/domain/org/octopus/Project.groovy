@@ -1,0 +1,58 @@
+package org.octopus
+
+class Project {
+	String iid
+	String status
+	String title
+	String sampleType
+	String sourceName
+	String organism
+	String characteristics
+	String treatmentProtocol
+	String growthProtocol
+	String extractedMolecule
+	String extractionProtocol
+	String libraryStrategy
+	String librarySource
+	String librarySelection
+	String instrumentModel
+	String description
+	String dataProcessing
+	String lastUpdateDate
+	String contactName
+	String email
+	String organizationName
+	String department
+	String lab
+	String streetAddress
+	String city
+	String zipPostalCode
+	String country
+	String sra
+	String bioSample
+	String experimentType
+	String summary
+	String overallDesign
+	String submissionDate
+	String phone
+	String stateProvince
+	String platformId
+	String ftpStatus
+	
+	static hasMany = [supplementaryFiles: SupplementaryFile]
+
+    static constraints = {
+		iid unique: true
+    
+	}
+	static mapping = {
+		version false
+		treatmentProtocol type: 'text'
+		growthProtocol type: 'text'
+		extractionProtocol type: 'text'
+		dataProcessing type: 'text'
+		characteristics type: 'text'
+	}
+	
+
+}
