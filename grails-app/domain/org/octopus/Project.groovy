@@ -54,6 +54,7 @@ class Project {
 		extractionProtocol type: 'text'
 		dataProcessing type: 'text'
 		characteristics type: 'text'
+		browsingStatus type: 'text'
 	}
 	
 

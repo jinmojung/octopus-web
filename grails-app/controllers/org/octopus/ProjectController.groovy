@@ -4,7 +4,7 @@ package org.octopus
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
+import grails.converters.*
 @Transactional(readOnly = true)
 class ProjectController {
 
@@ -107,13 +107,27 @@ class ProjectController {
 	def search(){
 		def projectList = []
 		if(params.keyword != null && params.keyword != ''){
-			projectList = Project.findAllByTitleLikeOrSourceNameLike("%${params.keyword}%","%${params.keyword}%")
+			projectList = Project.createCriteria().list{
+				eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
+				or{
+					like("title", "%${params.keyword}%")
+					like("sourceName", "%${params.keyword}%")
+				}
+			}
 		}
 		println projectList.size()
 		render(view: "search", model: [projectList: projectList])
 	}
 	def browsing(){
 		println params
+		def projectList = []
+		def ucscCheck = params.ucscCheck
+		ucscCheck.each {
+			if(it != ''){
+				projectList << Project.findByIid(it)
+			}
+		}
+		render(view: "browsing", model: [projectList: projectList])
 	}
 	
 	def getUcscFile(){
@@ -133,5 +147,16 @@ class ProjectController {
 		OutputStream out = response.getOutputStream()
 		out.write(attachFile.getBytes())
 		out.close()
+	}
+	
+	def getAutoSearchText(){
+		println "getAutoSearchText"
+		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
+		def list = []
+		projectList.each{
+			list << "${it.title}"
+			list << "${it.sourceName}"
+		}
+		render list as JSON
 	}
 }

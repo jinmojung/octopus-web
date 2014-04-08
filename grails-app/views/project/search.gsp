@@ -1,10 +1,47 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
+		<link href="${resource(dir: 'css/ui-lightness/', file: 'jquery-ui-1.10.4.css')}" rel="stylesheet">
+		<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.4.min.js')}"></script>
 		<script type="text/javascript">
-		function showSearching(){
-			$('#result').text('searching')
-		}
+		$(function() {
+			$.ajax({
+		        type: "GET",
+		        url: '<g:createLink controller="project" action="getAutoSearchText"/>',
+		        success : function(response) {
+		            $("#keyword").autocomplete({
+		                source: response
+		            });
+		        }
+		    });
+		    
+			var availableTags = [
+				"ActionScript",
+				"AppleScript",
+				"Asp",
+				"BASIC",
+				"C",
+				"C++",
+				"Clojure",
+				"COBOL",
+				"ColdFusion",
+				"Erlang",
+				"Fortran",
+				"Groovy",
+				"Haskell",
+				"Java",
+				"JavaScript",
+				"Lisp",
+				"Perl",
+				"PHP",
+				"Python",
+				"Ruby",
+				"Scala",
+				"Scheme"
+			];
+
+		});
+		
 		</script>
 	</head>
 	<body>
@@ -18,6 +55,7 @@
 			<div>
 			<g:if test="${projectList?.size() > 0 }">
 			<table style="margin: auto;">
+				<g:hiddenField name="ucscCheck" value=""/>
 				<g:each in="${projectList}" status="i" var="projectInstance">
 					<tr>
 						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false"/></td>
