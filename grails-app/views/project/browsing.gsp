@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<meta name="layout" content="main"/>
+		<meta name="layout" content="nocss"/>
 </head>
 <body>
 <g:each in="${projectList}" status="i" var="projectInstance">

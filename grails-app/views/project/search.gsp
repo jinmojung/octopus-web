@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<meta name="layout" content="main"/>
+		<meta name="layout" content="nocss"/>
 		<link href="${resource(dir: 'css/ui-lightness/', file: 'jquery-ui-1.10.4.css')}" rel="stylesheet">
 		<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.4.min.js')}"></script>
 		<script type="text/javascript">
@@ -14,32 +14,6 @@
 		            });
 		        }
 		    });
-		    
-			var availableTags = [
-				"ActionScript",
-				"AppleScript",
-				"Asp",
-				"BASIC",
-				"C",
-				"C++",
-				"Clojure",
-				"COBOL",
-				"ColdFusion",
-				"Erlang",
-				"Fortran",
-				"Groovy",
-				"Haskell",
-				"Java",
-				"JavaScript",
-				"Lisp",
-				"Perl",
-				"PHP",
-				"Python",
-				"Ruby",
-				"Scala",
-				"Scheme"
-			];
-
 		});
 		
 		</script>
@@ -55,12 +29,19 @@
 			<div>
 			<g:if test="${projectList?.size() > 0 }">
 			<table style="margin: auto;">
+				<tr>
+					<td></td>
+					<td style="min-width: 150px;text-align: center;">Tissue</td>
+					<td style="min-width: 150px;text-align: center;">Antibody</td>
+					<td style="min-width: 150px;text-align: center;">GSM_number</td>
+				</tr>
 				<g:hiddenField name="ucscCheck" value=""/>
 				<g:each in="${projectList}" status="i" var="projectInstance">
 					<tr>
-						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false"/></td>
-						<td>${projectInstance.title}</td>
-						<td>${projectInstance.iid}</td>
+						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false" style="width:20px;height:20px;"/></td>
+						<td style="min-width: 150px;text-align: center;">${projectInstance.tissue}</td>
+						<td style="min-width: 150px;text-align: center;">${projectInstance.antibody}</td>
+						<td style="min-width: 150px;text-align: center;"><g:link action="show" id="${projectInstance.id}">${projectInstance.iid}</g:link></td>
 					</tr>
 				</g:each>
 			</table>

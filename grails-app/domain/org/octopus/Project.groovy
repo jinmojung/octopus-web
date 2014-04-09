@@ -57,5 +57,23 @@ class Project {
 		browsingStatus type: 'text'
 	}
 	
+	String getTissue(){
+		def matcher = ( characteristics =~ /tissue:\s?(\S*)/ )
+		if(matcher.find()){
+			return matcher.group(1)
+		}else{
+			return ""
+		}
+	}
+	
+	String getAntibody(){
+		def matcher = ( characteristics =~ /antibody:\s?(\S*)/ )
+		if(matcher.find()){
+			return matcher.group(1)
+		}else{
+			return ""
+		}
+	}
+	
 
 }

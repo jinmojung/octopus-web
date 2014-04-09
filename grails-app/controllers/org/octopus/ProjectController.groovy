@@ -150,13 +150,13 @@ class ProjectController {
 	}
 	
 	def getAutoSearchText(){
-		println "getAutoSearchText"
 		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
 		def list = []
 		projectList.each{
 			list << "${it.title}"
 			list << "${it.sourceName}"
 		}
+		list.sort()
 		render list as JSON
 	}
 }
