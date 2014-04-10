@@ -115,11 +115,9 @@ class ProjectController {
 				}
 			}
 		}
-		println projectList.size()
 		render(view: "search", model: [projectList: projectList])
 	}
 	def browsing(){
-		println params
 		def projectList = []
 		def ucscCheck = params.ucscCheck
 		ucscCheck.each {

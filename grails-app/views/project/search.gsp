@@ -14,50 +14,77 @@
 		            });
 		        }
 		    });
+
+
+		    $("#search" ).click(function() {
+			    if($("#keyword").val() != ''){
+			    	$("#searchForm" ).submit()
+				}
+	    	});
+
+		    $("#browsing" ).click(function() {
+			    if($("input[name=ucscCheck]:checked").size() != 0){
+			    	$("#browsingForm" ).submit()
+				}
+	    	});
 		});
 		
 		</script>
 	</head>
 	<body>
-	<div id="align" style="width: 100%;text-align: center;">  
-	<div id="content" style="height: 50px;margin-top: 100px;">  
-		<g:form controller="project" action="search" method="GET">
-			<input id="keyword" name="keyword" type="text" autocomplete="off" value="${params.keyword}" style="height: 30px;width: 400px;font-size: 16px;">
-			<g:submitButton name="search" style="height: 30px;width: 100px;font-size: 16px;"/>
+	<div style="float: left;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;width: 65%;margin-left: 20px;margin-top: 5px;">
+The Octopus interface can be used to search the 
+GEO database for ChIP-seq data sets and display 
+information in a user-friendly way through the 
+UCSC browser. Current searches are restricted to 
+data sets related to the JAK-STAT pathway.
+	</div>
+	<div style="float: right;width: 30%;">
+	<img alt="main" src="${resource(dir: 'images', file: 'main.jpg')}" style="width: 100%;">
+	</div>
+	<div style="width: 100%;clear: both;text-align: center;">
+	<div style="height: 50px;padding-top: 100px;">
+		<g:form name="searchForm" controller="project" action="search" method="GET">
+			<input id="keyword" name="keyword" type="text" autocomplete="off" value="${params.keyword}" style="border:solid;font-family: Arial, Helvetica, sans-serif;height: 50px;width: 400px;font-size: 25px;">
+			<span id="search" style="cursor:pointer;  margin-left:20px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">SEARCH</span>
 		</g:form>
-		<g:form controller="project" action="browsing">
-			<div>
+		<g:form name="browsingForm" controller="project" action="browsing">
 			<g:if test="${projectList?.size() > 0 }">
-			<table style="margin: auto;">
+			<table style="margin: auto;padding-top: 20px;padding-bottom: 20px;">
 				<tr>
 					<td></td>
-					<td style="min-width: 150px;text-align: center;">Tissue</td>
-					<td style="min-width: 150px;text-align: center;">Antibody</td>
-					<td style="min-width: 150px;text-align: center;">GSM_number</td>
+					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Tissue</td>
+					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Antibody</td>
+					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">GSM_number</td>
 				</tr>
 				<g:hiddenField name="ucscCheck" value=""/>
 				<g:each in="${projectList}" status="i" var="projectInstance">
 					<tr>
 						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false" style="width:20px;height:20px;"/></td>
-						<td style="min-width: 150px;text-align: center;">${projectInstance.tissue}</td>
-						<td style="min-width: 150px;text-align: center;">${projectInstance.antibody}</td>
-						<td style="min-width: 150px;text-align: center;"><g:link action="show" id="${projectInstance.id}">${projectInstance.iid}</g:link></td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.tissue}</td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.antibody}</td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;"><g:link action="show" id="${projectInstance.id}">${projectInstance.iid}</g:link></td>
 					</tr>
 				</g:each>
 			</table>
-			<g:submitButton name="browsing" style="height: 30px;width: 100px;font-size: 16px;"/>
+			<span id="browsing" style="cursor:pointer;  margin-top:30px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">BROWSING</span>
 			</g:if>
 			<g:else>
-			<div>
+			<div style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;padding-top: 50px;">
 				<g:if test="${params.keyword != null && params.keyword != ''}">
-				no data
+				No Data
 				</g:if>
 			</div>
 			</g:else>
-		</div>
 		</g:form>
-	</div>  
-	</div> 
+	</div>
+	</div>
+	<div style="position: absolute;bottom: 20px;width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">
+	Octopus was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen  
+	Same text in Hangul
+	2014 – all rights reserved
+	</div>
+	
 	</body>
 </html>
 
