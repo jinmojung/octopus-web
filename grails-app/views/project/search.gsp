@@ -15,7 +15,8 @@
 		        }
 		    });
 
-
+			$("#keyword").focus()
+			
 		    $("#search" ).click(function() {
 			    if($("#keyword").val() != ''){
 			    	$("#searchForm" ).submit()
@@ -79,7 +80,7 @@ data sets related to the JAK-STAT pathway.
 		</g:form>
 	</div>
 	</div>
-	<div style="position: absolute;bottom: 20px;width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">
+	<div style="position: absolute;bottom: 20px;width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;">
 	Octopus was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen  
 	Same text in Hangul
 	2014 – all rights reserved
