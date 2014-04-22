@@ -13,8 +13,8 @@ environments {
 		    dbCreate = "update"
 		    url = "jdbc:mysql://211.110.140.104/octopus?useUnicode=yes&characterEncoding=UTF-8"
 		    driverClassName = "com.mysql.jdbc.Driver"
-		    username = "1111"
-		    password = "2222"
+		    username = "root"
+		    password = "octoweb"
         }
     }
     test {

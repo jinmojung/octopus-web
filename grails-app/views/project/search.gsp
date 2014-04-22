@@ -28,6 +28,15 @@
 			    	$("#browsingForm" ).submit()
 				}
 	    	});
+
+		    var docHeight = $(window).height();
+		    var footerHeight = $('#footer').height();
+		    var footerTop = $('#footer').position().top + footerHeight;
+		    if(docHeight > footerTop){
+		    	$('#footer').css('margin-top',  (docHeight-footerTop - 15) + 'px');
+			}else{
+				$('#footer').css('margin-top',  15 + 'px');
+			}
 		});
 		
 		</script>
@@ -44,7 +53,7 @@ data sets related to the JAK-STAT pathway.
 	<img alt="main" src="${resource(dir: 'images', file: 'main.jpg')}" style="width: 100%;">
 	</div>
 	<div style="width: 100%;clear: both;text-align: center;">
-	<div style="height: 50px;padding-top: 100px;">
+	<div style="height: 50px;padding-top: 100px;height: 100%;">
 		<g:form name="searchForm" controller="project" action="search" method="GET">
 			<input id="keyword" name="keyword" type="text" autocomplete="off" value="${params.keyword}" style="border:solid;font-family: Arial, Helvetica, sans-serif;height: 50px;width: 400px;font-size: 25px;">
 			<span id="search" style="cursor:pointer;  margin-left:20px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">SEARCH</span>
@@ -80,7 +89,7 @@ data sets related to the JAK-STAT pathway.
 		</g:form>
 	</div>
 	</div>
-	<div style="position: absolute;bottom: 20px;width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;">
+	<div id="footer" style="width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;">
 	Octopus was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen  
 	Same text in Hangul
 	2014 – all rights reserved
