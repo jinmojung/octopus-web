@@ -28,7 +28,6 @@
 			    	$("#browsingForm" ).submit()
 				}
 	    	});
-
 		    var docHeight = $(window).height();
 		    var footerHeight = $('#footer').height();
 		    var footerTop = $('#footer').position().top + footerHeight;
@@ -37,6 +36,16 @@
 			}else{
 				$('#footer').css('margin-top',  15 + 'px');
 			}
+		    $( window ).resize(function() {
+		    	var docHeight = $(window).height();
+			    var footerHeight = $('#footer').height();
+			    var footerTop = $('#footer').position().top + footerHeight;
+			    if(docHeight > footerTop){
+			    	$('#footer').css('margin-top',  (docHeight-footerTop - 15) + 'px');
+				}else{
+					$('#footer').css('margin-top',  15 + 'px');
+				}
+	    	});
 		});
 		
 		</script>
@@ -63,16 +72,18 @@ data sets related to the JAK-STAT pathway.
 			<table style="margin: auto;padding-top: 20px;padding-bottom: 20px;">
 				<tr>
 					<td></td>
-					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Tissue</td>
 					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Antibody</td>
+					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Species</td>
+					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">Tissue</td>
 					<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20px;">GSM_number</td>
 				</tr>
 				<g:hiddenField name="ucscCheck" value=""/>
 				<g:each in="${projectList}" status="i" var="projectInstance">
 					<tr>
 						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false" style="width:20px;height:20px;"/></td>
-						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.tissue}</td>
 						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.antibody}</td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.organism}</td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.tissue}</td>
 						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;"><g:link action="show" id="${projectInstance.id}">${projectInstance.iid}</g:link></td>
 					</tr>
 				</g:each>

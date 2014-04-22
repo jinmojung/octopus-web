@@ -110,8 +110,8 @@ class ProjectController {
 			projectList = Project.createCriteria().list{
 				eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
 				or{
-					like("title", "%${params.keyword}%")
-					like("sourceName", "%${params.keyword}%")
+					like("characteristics", "%${params.keyword}%")
+					like("organism", "%${params.keyword}%")
 				}
 			}
 		}
@@ -151,9 +151,17 @@ class ProjectController {
 		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
 		def list = []
 		projectList.each{
-			list << "${it.title}"
-			list << "${it.sourceName}"
+			if(it.antibody != Const.NO_DATA){
+				list << it.antibody
+			}
+			if(it.organism != Const.NO_DATA){
+				list << it.organism
+			}
+			if(it.tissue != Const.NO_DATA){
+				list << it.tissue
+			}
 		}
+		list.unique() 
 		list.sort()
 		render list as JSON
 	}
