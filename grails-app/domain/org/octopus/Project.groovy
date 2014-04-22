@@ -58,21 +58,11 @@ class Project {
 	}
 	
 	String getTissue(){
-		def matcher = ( characteristics =~ /tissue:\s?(\S*)/ )
-		if(matcher.find()){
-			return matcher.group(1)
-		}else{
-			return ""
-		}
+		Util.getTissue(characteristics)
 	}
 	
 	String getAntibody(){
-		def matcher = ( characteristics =~ /antibody:\s?(\S*)/ )
-		if(matcher.find()){
-			return matcher.group(1)
-		}else{
-			return ""
-		}
+		Util.getAntibody(characteristics)
 	}
 	
 
