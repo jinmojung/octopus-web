@@ -106,12 +106,44 @@ class ProjectController {
 	
 	def search(){
 		def projectList = []
-		if(params.keyword != null && params.keyword != ''){
-			projectList = Project.createCriteria().list{
-				eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
-				or{
-					like("characteristics", "%${params.keyword}%")
-					like("organism", "%${params.keyword}%")
+		def keyword = params.keyword
+		if(keyword != null && keyword != ''){
+			if(keyword.indexOf("_") != -1){
+				def keywordSplit = keyword.split("_")
+				def antibody = keywordSplit[0]
+				def organism = keywordSplit[1]
+				def tissue = keywordSplit[2]
+				def projectListTemp = []
+				projectListTemp = Project.createCriteria().list{
+					eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
+					if(organism != Const.NO_DATA){
+						eq("organism", organism)
+					}
+				}
+				projectListTemp.each {
+					if(antibody != Const.NO_DATA && tissue == Const.NO_DATA){
+						if(it.antibody == antibody){
+							projectList << it
+						}
+					}else if(antibody == Const.NO_DATA && tissue != Const.NO_DATA){
+						if(it.tissue == tissue){
+							projectList << it
+						}
+					}else if(antibody == Const.NO_DATA && tissue == Const.NO_DATA){
+						projectList << it
+					}else if(antibody != Const.NO_DATA && tissue != Const.NO_DATA){
+						if(it.antibody == antibody && it.tissue == tissue){
+							projectList << it
+						}
+					}
+				}
+			}else{
+				projectList = Project.createCriteria().list{
+					eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
+					or{
+						like("characteristics", "%${keyword}%")
+						like("organism", "%${keyword}%")
+					}
 				}
 			}
 		}
