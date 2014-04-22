@@ -151,15 +151,7 @@ class ProjectController {
 		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
 		def list = []
 		projectList.each{
-			if(it.antibody != Const.NO_DATA){
-				list << it.antibody
-			}
-			if(it.organism != Const.NO_DATA){
-				list << it.organism
-			}
-			if(it.tissue != Const.NO_DATA){
-				list << it.tissue
-			}
+			list << "${it.antibody}_${it.organism}_${it.tissue}"
 		}
 		list.unique() 
 		list.sort()
