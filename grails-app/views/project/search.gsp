@@ -101,8 +101,8 @@ data sets related to the JAK-STAT pathway.
 	</div>
 	</div>
 	<div id="footer" style="width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;">
-	Octopus was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen  
-	Same text in Hangul
+	Octopus explorer was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen 
+	Octopus explorer는 강근수, 정진모… 로타 헤닉하우젠이 개발하였습니다.
 	2014 – all rights reserved
 	</div>
 	
