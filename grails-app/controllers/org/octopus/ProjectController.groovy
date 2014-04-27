@@ -9,6 +9,7 @@ import grails.converters.*
 class ProjectController {
 
 	def grailsApplication
+	def hubService
 	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -157,7 +158,8 @@ class ProjectController {
 				projectList << Project.findByIid(it)
 			}
 		}
-		render(view: "browsing", model: [projectList: projectList])
+		def madeHubPath = hubService.makeTempHub(projectList)
+		redirect (url: madeHubPath)
 	}
 	
 	def getUcscFile(){

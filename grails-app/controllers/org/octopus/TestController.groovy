@@ -8,6 +8,7 @@ import grails.transaction.Transactional
 class TestController {
 	def projectService
 	def ftpDownService
+	def hubService
 
     def index() {
 		println "index"+params
@@ -36,6 +37,14 @@ class TestController {
 				e.printStackTrace()
 			}
 		}
+	}
+	
+	def test(){
+		println "test"
+		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
+		def madeHubPath = hubService.makeTempHub(projectList)
+		println madeHubPath
+		
 	}
 
 }

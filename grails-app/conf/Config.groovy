@@ -94,14 +94,20 @@ environments {
 		ftp.dir = 'D:\\ftp\\'
 		ftp.temp.dir = 'D:\\temp\\'
 		move.cmd = 'cmd /c move'
+		copy.cmd = 'cmd /c copy'
 		ucsc.dir = 'D:\\ucsc\\'
+		hubRoot.dir = 'D:\\hub\\'
+		bigWig.dir = 'D:\\bigWig\\'
     }
     production {
         grails.logging.jul.usebridge = false
 		ftp.dir = '/home/octopus/ftpDown/'
 		ftp.temp.dir = '/home/octopus/temp/'
 		move.cmd = 'mv'
+		copy.cmd = 'cp'
 		ucsc.dir = '/home/octopus/ucsc/'
+		hubRoot.dir = '/home/octopus/tomcat8/webapps/ucsc/'
+		bigWig.dir = '/home/octopus/bigWig/'
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
