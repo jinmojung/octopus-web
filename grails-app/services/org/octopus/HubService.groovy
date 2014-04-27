@@ -23,7 +23,7 @@ class HubService {
 			def txt =
 """
 hub octopusHub 
-shortLabeloctopusHub 
+shortLabel octopusHub 
 longLabel octopusHub 
 genomesFile genomes.txt
 email 82jjm1000@gmail.com
@@ -81,11 +81,12 @@ longLabel octopusSearch
 	
 	def writeTrackDbTxt(trackDbTxtContent,projects){
 		println "writeTrackDbTxt"+projects.size()
+		int index = 0
 		projects.each{
 			trackDbTxtContent +=
 """
 
-track ${it.antibody}_${it.organism}_${it.tissue}
+track octopusSearch${index}
 bigDataUrl ${it.ucscFilePath}
 parent octopusSearch
 visibility full
@@ -94,6 +95,7 @@ shortLabel ${it.antibody}_${it.organism}_${it.tissue}
 longLabel ${it.antibody}_${it.organism}_${it.tissue}
 type bigWig 0 100
 """
+			index++
 		}
 		return trackDbTxtContent
 		
