@@ -52,6 +52,8 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
 		 compile 'org.jsoup:jsoup:1.7.3'
 		 compile 'commons-net:commons-net:3.3'
+		 compile 'org.apache.poi:poi:3.9'
+		 compile 'org.apache.poi:poi-ooxml:3.9'
 		 compile 'org.apache.commons:commons-io:1.3.2'
     }
 	

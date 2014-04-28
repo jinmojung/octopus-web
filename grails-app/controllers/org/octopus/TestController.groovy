@@ -46,5 +46,41 @@ class TestController {
 		println madeHubPath
 		
 	}
+	
+	def read(){
+		println "read"
+		ExcelBuilder excelBuilder = new ExcelBuilder('Octopus_list.xlsx',null).eachLine([labels:true,sheet:0]) {
+			try{
+				if(cell(5)!=null){
+					try {
+						String GSM = cell(5).toString()
+						String File = cell(7).toString()
+						def projecct = Project.findByIid(GSM)
+						if(projecct){
+							if(File != 'null'){
+								projecct.browsingStatus = Const.BROWSING_STATUS_MAKE_UCSC_FINISH
+								projecct.ucscFilePath = File
+								projecct.save(flush:true)
+							}else{
+							println "444444"
+							}
+							//projecct.browsingStatus = Const.BROWSING_STATUS_MAKE_UCSC_FINISH
+							//projecct.ucscFilePath
+						}else{
+							println "2222222222222"
+							projectService.saveProject(GSM)
+						}
+						println "GSM "+GSM
+						println "File "+File
+					} catch (Exception e) {
+						e.printStackTrace()
+					}
+				}
+			}catch (Exception e) {
+				e.printStackTrace()
+			}
+		}
+		
+	}
 
 }

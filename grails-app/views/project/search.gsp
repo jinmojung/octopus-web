@@ -51,15 +51,15 @@
 		</script>
 	</head>
 	<body>
-	<div style="float: left;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;width: 65%;margin-left: 20px;margin-top: 5px;">
+	<div style="float: left;width: 30%;">
+	<img alt="main" src="${resource(dir: 'images', file: 'octopus_logo.png')}" style="width: 100%;">
+	</div>
+	<div style="float: right;font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;width: 65%;margin-left: 20px;margin-top: 5px;">
 The Octopus interface can be used to search the 
 GEO database for ChIP-seq data sets and display 
 information in a user-friendly way through the 
 UCSC browser. Current searches are restricted to 
 data sets related to the JAK-STAT pathway.
-	</div>
-	<div style="float: right;width: 30%;">
-	<img alt="main" src="${resource(dir: 'images', file: 'main.jpg')}" style="width: 100%;">
 	</div>
 	<div style="width: 100%;clear: both;text-align: center;">
 	<div style="height: 50px;padding-top: 100px;height: 100%;">
@@ -101,9 +101,9 @@ data sets related to the JAK-STAT pathway.
 	</div>
 	</div>
 	<div id="footer" style="width: 98%;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 18px;">
-	Octopus explorer was developed by Keunsoo Kang, Jinmo … and Lothar Hennighausen 
+	The Octopus Explorer was developed by Keunsoo Kang, Jinmo Jung and Lothar Hennighausen
 	<br/>
-	Octopus explorer는 강근수, 정진모… 로타 헤닉하우젠이 개발하였습니다.
+	Octopus explorer는 강근수, 정진모, 로타 헤닉하우젠이 개발하였습니다. 
 	<br/>
 	2014 – all rights reserved
 	</div>

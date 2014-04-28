@@ -24,12 +24,23 @@ class Util {
 	 * @param from 
 	 * @return String 
 	 */
-	public static String getTissue(from) {
-		def matcher = ( from =~ /tissue:\s?(\S*)/ )
-		if(matcher.find()){
-			return matcher.group(1)
-		}else{
+	public static String getTissue(String... from) {
+		def matcher
+		String result = ''
+		from.each{
+			matcher = ( it =~ /tissue:\s?(\S*)/ )
+			if(matcher.find()){
+				result = matcher.group(1)
+			}
+			matcher = ( it =~ /(\S*)(\s?)tissue/ )
+			if(matcher.find()){
+				result = matcher.group(1)
+			}
+		}
+		if(result == ''){
 			return Const.NO_DATA
+		}else{
+			return result
 		}
 	}
 	

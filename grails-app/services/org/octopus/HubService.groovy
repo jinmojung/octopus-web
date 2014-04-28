@@ -64,7 +64,7 @@ longLabel octopusSearch
 		trackDbTxt.withWriter{out ->
 			out.append(trackDbTxtContent)
 		}
-		return "http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm9&hubUrl=http://octopus-explorer.com/ucsc/${tempFolderNaame}/hub.txt"
+		return tempFolderNaame
 	}
 	
 	def copyBigWig(todir,projects){
@@ -82,7 +82,26 @@ longLabel octopusSearch
 	def writeTrackDbTxt(trackDbTxtContent,projects){
 		println "writeTrackDbTxt"+projects.size()
 		int index = 0
+		String color = ""
+		
 		projects.each{
+			if((index % 8)== 0){
+				color = "color 0,0,0"
+			}else if((index % 8) == 1){
+				color = "color 255,0,0"
+			}else if((index % 8) == 2){
+				color = "color 0,255,0"
+			}else if((index % 8) == 3){
+				color = "color 0,0,255"
+			}else if((index % 8) == 4){
+				color = "color 0,255,255"
+			}else if((index % 8) == 5){
+				color = "color 255,255,0"
+			}else if((index % 8) == 6){
+				color = "color 255,0,255"
+			}else if((index % 8) == 7){
+				color = "color 255,255,255"
+			}
 			trackDbTxtContent +=
 """
 
@@ -90,9 +109,9 @@ track octopusSearch${index}
 bigDataUrl ${it.ucscFilePath}
 parent octopusSearch
 visibility full
-color 213,123,123
-shortLabel ${it.antibody}_${it.organism}_${it.tissue}
-longLabel ${it.antibody}_${it.organism}_${it.tissue}
+${color}
+shortLabel ${it.antibody}_${it.organism}_${it.tissue}_${it.iid}
+longLabel ${it.antibody}_${it.organism}_${it.tissue}_${it.iid}
 type bigWig 0 100
 """
 			index++

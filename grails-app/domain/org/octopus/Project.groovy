@@ -58,7 +58,7 @@ class Project {
 	}
 	
 	String getTissue(){
-		Util.getTissue(characteristics)
+		Util.getTissue(characteristics,sourceName)
 	}
 	
 	String getAntibody(){

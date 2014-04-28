@@ -158,8 +158,20 @@ class ProjectController {
 				projectList << Project.findByIid(it)
 			}
 		}
-		def madeHubPath = hubService.makeTempHub(projectList)
-		redirect (url: madeHubPath)
+		def tempHubDir = hubService.makeTempHub(projectList)
+		def madeHubPath = "http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm9&hubUrl=http://octopus-explorer.com/ucsc/${tempHubDir}/hub.txt"
+		redirect url: madeHubPath
+		//render(view: "browsing", model: [madeHubPath: madeHubPath,tempHubDir:tempHubDir])
+	}
+	
+	def delTempHubDir(){
+		println params.tempHubDir
+		def delCmd = grailsApplication.config.del.cmd
+		def hubRootDir = grailsApplication.config.hubRoot.dir
+		Runtime rt = Runtime.getRuntime()
+		println "${delCmd} ${hubRootDir}${params.tempHubDir}"
+		//rt.exec("${delCmd} ${hubRootDir}${params.tempHubDir}")
+		render 'true'
 	}
 	
 	def getUcscFile(){
