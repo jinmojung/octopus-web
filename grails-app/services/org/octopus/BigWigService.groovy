@@ -31,22 +31,18 @@ browser pack knownGene
 		int index = 0
 		String color = ""
 		projects.each{
-			if((index % 8)== 0){
+			if((index % 6)== 0){
 				color = "color=0,0,0"
-			}else if((index % 8) == 1){
+			}else if((index % 6) == 1){
 				color = "color=255,0,0"
-			}else if((index % 8) == 2){
+			}else if((index % 6) == 2){
 				color = "color=0,255,0"
-			}else if((index % 8) == 3){
+			}else if((index % 6) == 3){
 				color = "color=0,0,255"
-			}else if((index % 8) == 4){
+			}else if((index % 6) == 4){
 				color = "color=0,255,255"
-			}else if((index % 8) == 5){
-				color = "color=255,255,0"
-			}else if((index % 8) == 6){
+			}else if((index % 6) == 5){
 				color = "color=255,0,255"
-			}else if((index % 8) == 7){
-				color = "color=255,255,255"
 			}
 			trackDbTxtContent +=
 """
