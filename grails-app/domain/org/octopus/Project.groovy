@@ -39,6 +39,9 @@ class Project {
 	String platformId
 	String browsingStatus
 	String ucscFilePath
+	String tissue
+	String antibody
+	String species
 	
 	
 	static hasMany = [supplementaryFiles: SupplementaryFile]
@@ -58,11 +61,27 @@ class Project {
 	}
 	
 	String getTissue(){
-		Util.getTissue(characteristics,sourceName)
+		if(tissue != null){
+			return tissue
+		}else{
+			return Util.getTissue(characteristics,sourceName)
+		}
 	}
 	
 	String getAntibody(){
-		Util.getAntibody(characteristics)
+		if(antibody != null){
+			return antibody
+		}else{
+			return Util.getAntibody(characteristics)
+		}
+	}
+	
+	String getSpecies(){
+		if(species != null){
+			return species
+		}else{
+			return organism
+		}
 	}
 	
 

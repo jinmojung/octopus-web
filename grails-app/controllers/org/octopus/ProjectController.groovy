@@ -9,7 +9,7 @@ import grails.converters.*
 class ProjectController {
 
 	def grailsApplication
-	def hubService
+	def bigWigService
 	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -112,13 +112,16 @@ class ProjectController {
 			if(keyword.indexOf("_") != -1){
 				def keywordSplit = keyword.split("_")
 				def antibody = keywordSplit[0]
-				def organism = keywordSplit[1]
+				def species = keywordSplit[1]
 				def tissue = keywordSplit[2]
 				def projectListTemp = []
 				projectListTemp = Project.createCriteria().list{
 					eq("browsingStatus", Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
-					if(organism != Const.NO_DATA){
-						eq("organism", organism)
+					if(species != Const.NO_DATA){
+						or{
+							eq("species", species)
+							eq("organism", species)
+						}
 					}
 				}
 				projectListTemp.each {
@@ -158,8 +161,8 @@ class ProjectController {
 				projectList << Project.findByIid(it)
 			}
 		}
-		def tempHubDir = hubService.makeTempHub(projectList)
-		def madeHubPath = "http://genome.ucsc.edu/cgi-bin/hgTracks?db=mm9&hubUrl=http://octopus-explorer.com/ucsc/${tempHubDir}/hub.txt"
+		def tempHubDir = bigWigService.makeTempHub(projectList)
+		def madeHubPath = "http://genome.ucsc.edu/cgi-bin/hgTracks?org=mouse&db=mm9&hgt.customText=http://octopus-explorer.com/ucsc/bigWig/${tempHubDir}.txt"
 		redirect url: madeHubPath
 		//render(view: "browsing", model: [madeHubPath: madeHubPath,tempHubDir:tempHubDir])
 	}
@@ -197,7 +200,7 @@ class ProjectController {
 		def projectList = Project.findAllByBrowsingStatus(Const.BROWSING_STATUS_MAKE_UCSC_FINISH)
 		def list = []
 		projectList.each{
-			list << "${it.antibody}_${it.organism}_${it.tissue}"
+			list << "${it.antibody}_${it.species}_${it.tissue}"
 		}
 		list.unique() 
 		list.sort()

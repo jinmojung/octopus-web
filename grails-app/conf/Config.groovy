@@ -96,8 +96,6 @@ environments {
 		move.cmd = 'cmd /c move'
 		copy.cmd = 'cmd /c copy'
 		del.cmd = 'cmd /c rd /s/q'
-		ucsc.dir = 'D:\\ucsc\\'
-		hubRoot.dir = 'D:\\hub\\'
 		bigWig.dir = 'D:\\bigWig\\'
     }
     production {
@@ -107,9 +105,7 @@ environments {
 		move.cmd = 'mv'
 		copy.cmd = 'cp'
 		del.cmd = 'rm -rf '
-		ucsc.dir = '/home/octopus/ucsc/'
-		hubRoot.dir = '/home/octopus/tomcat8/webapps/ucsc/'
-		bigWig.dir = '/home/octopus/bigWig/'
+		bigWig.dir = '/home/octopus/tomcat8/webapps/ucsc/bigWig/'
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

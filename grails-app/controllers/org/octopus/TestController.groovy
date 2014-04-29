@@ -53,6 +53,9 @@ class TestController {
 			try{
 				if(cell(5)!=null){
 					try {
+						String Antibody = cell(1).toString()
+						String Species = cell(2).toString()
+						String Tissue = cell(3).toString()
 						String GSM = cell(5).toString()
 						String File = cell(7).toString()
 						def projecct = Project.findByIid(GSM)
@@ -60,12 +63,18 @@ class TestController {
 							if(File != 'null'){
 								projecct.browsingStatus = Const.BROWSING_STATUS_MAKE_UCSC_FINISH
 								projecct.ucscFilePath = File
+								if(Antibody != 'null'){
+									projecct.antibody = Antibody
+								}
+								if(Species != 'null'){
+									projecct.species = Species
+								}
+								if(Tissue != 'null'){
+									projecct.tissue = Tissue
+								}
 								projecct.save(flush:true)
-							}else{
-							println "444444"
+								println "1111111"
 							}
-							//projecct.browsingStatus = Const.BROWSING_STATUS_MAKE_UCSC_FINISH
-							//projecct.ucscFilePath
 						}else{
 							println "2222222222222"
 							projectService.saveProject(GSM)

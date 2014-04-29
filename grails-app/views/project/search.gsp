@@ -82,7 +82,7 @@ data sets related to the JAK-STAT pathway.
 					<tr>
 						<td><g:checkBox name="ucscCheck" value="${projectInstance.iid}" checked="false" style="width:20px;height:20px;"/></td>
 						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.antibody}</td>
-						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.organism}</td>
+						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.species}</td>
 						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;">${projectInstance.tissue}</td>
 						<td style="min-width: 150px;text-align: center;font-family: Arial, Helvetica, sans-serif;font-size: 16px;"><g:link action="show" id="${projectInstance.id}">${projectInstance.iid}</g:link></td>
 					</tr>
