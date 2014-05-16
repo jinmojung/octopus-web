@@ -89,7 +89,47 @@ class TestController {
 				e.printStackTrace()
 			}
 		}
-		
 	}
+	
+	
+	def read2(){
+		println "read2"
+		ExcelBuilder excelBuilder = new ExcelBuilder('Octopus_list2.xlsx',null).eachLine([labels:true,sheet:0]) {
+			try{
+				if(cell(5)!=null){
+					try {
+						String Antibody = cell(1).toString()
+						String Species = cell(2).toString()
+						String Tissue = cell(3).toString()
+						String GSM = cell(5).toString()
+						String File = cell(7).toString()
+						Project projecct = new Project()
+						if(GSM != 'null'){
+							projecct.iid = GSM
+						}
+						if(Antibody != 'null'){
+							projecct.antibody = Antibody
+						}
+						if(Species != 'null'){
+							projecct.species = Species
+						}
+						if(Tissue != 'null'){
+							projecct.tissue = Tissue
+						}
+						projecct.ucscFilePath = File
+						projecct.save()
+						
+						println "projecct "+projecct
+					} catch (Exception e) {
+						e.printStackTrace()
+					}
+				}
+			}catch (Exception e) {
+				e.printStackTrace()
+			}
+		}
+	}
+	
+	
 
 }
