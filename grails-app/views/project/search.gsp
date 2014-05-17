@@ -64,11 +64,12 @@ data sets related to the JAK-STAT pathway.
 	<div style="width: 100%;clear: both;text-align: center;">
 	<div style="height: 50px;padding-top: 100px;height: 100%;">
 		<g:form name="searchForm" controller="project" action="search" method="GET">
-			<input id="keyword" name="keyword" type="text" autocomplete="off" value="${params.keyword}" style="border:solid;font-family: Arial, Helvetica, sans-serif;height: 50px;width: 400px;font-size: 25px;">
+			<input id="keyword" name="keyword" type="text" autocomplete="off" value="${params.keyword}" style="border:solid;font-family: Arial, Helvetica, sans-serif;height: 50px;width: 400px;font-size: 25px;margin-bottom: 20px;">
 			<span id="search" style="cursor:pointer;  margin-left:20px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">SEARCH</span>
 		</g:form>
 		<g:form name="browsingForm" controller="project" action="browsing">
 			<g:if test="${projectList?.size() > 0 }">
+			<span id="browsing" style="cursor:pointer;  margin-top:30px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">BROWSING</span>
 			<table style="margin: auto;padding-top: 20px;padding-bottom: 20px;">
 				<tr>
 					<td></td>
@@ -88,7 +89,6 @@ data sets related to the JAK-STAT pathway.
 					</tr>
 				</g:each>
 			</table>
-			<span id="browsing" style="cursor:pointer;  margin-top:30px; font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;">BROWSING</span>
 			</g:if>
 			<g:else>
 			<div style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;font-size: 30px;padding-top: 50px;">

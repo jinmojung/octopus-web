@@ -163,8 +163,8 @@ class ProjectController {
 		}
 		def tempHubDir = bigWigService.makeTempHub(projectList)
 		def madeHubPath = "http://genome.ucsc.edu/cgi-bin/hgTracks?org=mouse&db=mm9&hgt.customText=http://octopus-explorer.com/ucsc/bigWig/${tempHubDir}.txt"
-		redirect url: madeHubPath
-		//render(view: "browsing", model: [madeHubPath: madeHubPath,tempHubDir:tempHubDir])
+		//redirect url: madeHubPath
+		render(view: "browsing", model: [madeHubPath: madeHubPath])
 	}
 	
 	def delTempHubDir(){
