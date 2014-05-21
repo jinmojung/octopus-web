@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta name="layout" content="nocss"/>
+		<title>Octopus Search</title>
 		<link href="${resource(dir: 'css/ui-lightness/', file: 'jquery-ui-1.10.4.css')}" rel="stylesheet">
 		<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.4.min.js')}"></script>
 		<script type="text/javascript">
