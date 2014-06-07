@@ -4,7 +4,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'iid', 'error')} ">
 	<label for="iid">
-		<g:message code="project.iid.label" default="Iid" />
+		<g:message code="project.iid.label" default="GSM Number" />
 		
 	</label>
 	<g:textField name="iid" value="${projectInstance?.iid}"/>
@@ -290,6 +290,64 @@
 	<g:textField name="platformId" value="${projectInstance?.platformId}"/>
 </div>
 
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'browsingStatus', 'error')} ">
+	<label for="browsingStatus">
+		<g:message code="project.browsingStatus.label" default="Browsing Status" />
+		
+	</label>
+	<g:textField name="browsingStatus" value="${projectInstance?.browsingStatus}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'ucscFilePath', 'error')} ">
+	<label for="ucscFilePath">
+		<g:message code="project.ucscFilePath.label" default="Ucsc File Path" />
+		
+	</label>
+	<g:textField name="ucscFilePath" value="${projectInstance?.ucscFilePath}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'tissue', 'error')} ">
+	<label for="tissue">
+		<g:message code="project.tissue.label" default="tissue" />
+		
+	</label>
+	<g:textField name="tissue" value="${projectInstance?.tissue}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'antibody', 'error')} ">
+	<label for="antibody">
+		<g:message code="project.antibody.label" default="antibody" />
+		
+	</label>
+	<g:textField name="antibody" value="${projectInstance?.antibody}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'species', 'error')} ">
+	<label for="species">
+		<g:message code="project.species.label" default="species" />
+		
+	</label>
+	<g:textField name="species" value="${projectInstance?.species}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'stage', 'error')} ">
+	<label for="stage">
+		<g:message code="project.stage.label" default="stage" />
+		
+	</label>
+	<g:textField name="stage" value="${projectInstance?.stage}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'treatment', 'error')} ">
+	<label for="treatment">
+		<g:message code="project.treatment.label" default="treatment" />
+		
+	</label>
+	<g:textField name="treatment" value="${projectInstance?.treatment}"/>
+</div>
+
+
 <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'supplementaryFiles', 'error')} ">
 	<label for="supplementaryFiles">
 		<g:message code="project.supplementaryFiles.label" default="Supplementary Files" />
@@ -297,4 +355,3 @@
 	</label>
 	<g:select name="supplementaryFiles" from="${org.octopus.SupplementaryFile.list()}" multiple="multiple" optionKey="id" size="5" value="${projectInstance?.supplementaryFiles*.id}" class="many-to-many"/>
 </div>
-

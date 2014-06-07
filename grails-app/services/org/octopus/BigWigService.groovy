@@ -44,15 +44,27 @@ browser pack knownGene
 			}else if((index % 6) == 5){
 				color = "color=255,0,255"
 			}
+			def ucscFilePathName = getUcscFilePathName(it.ucscFilePath)
 			trackDbTxtContent +=
 """
-track type=bigWig name="${it.ucscFilePath}" db=mm9 description="${it.ucscFilePath}" ${color} visibility=2 bigDataUrl=http://octopus-explorer.com/ucsc/bigWig/${it.ucscFilePath}
+track type=bigWig name="${ucscFilePathName}" db=mm9 description="${it.ucscFilePath}" ${color} visibility=2 bigDataUrl=${it.ucscFilePath}
 """
 			index++
 		}
 		return trackDbTxtContent
 		
 	}
+	
+	def getUcscFilePathName(String ucscFilePath){
+	def result
+	def lastIndexOf = ucscFilePath.lastIndexOf('/')
+	if(lastIndexOf != -1){
+		result = ucscFilePath.substring(lastIndexOf+1, ucscFilePath.length())
+	}else{
+		result = ucscFilePath
+	}
+	return result
+}
 	
 
 }

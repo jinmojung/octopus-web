@@ -42,6 +42,8 @@ class Project {
 	String tissue
 	String antibody
 	String species
+	String stage
+	String treatment
 	
 	
 	static hasMany = [supplementaryFiles: SupplementaryFile]

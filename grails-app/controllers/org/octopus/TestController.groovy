@@ -91,6 +91,27 @@ class TestController {
 		}
 	}
 	
+	def update(){
+		println "update"
+		def projectList = Project.list()
+		int i = 0
+		println projectList.size()
+		projectList.each {
+			println i
+//			if(it.ucscFilePath != null && it.ucscFilePath != ""){
+//				it.ucscFilePath = "http://octopus-explorer.com/ucsc/bigWig/"+it.ucscFilePath
+//				it.save(flush:true)
+//				println "it.ucscFilePath != null"
+//			}
+			if(it.ucscFilePath == "http://octopus-explorer.com/ucsc/bigWig/http://octopus-explorer.com/ucsc/bigWig/"){
+				it.ucscFilePath = ""
+				it.save(flush:true)
+				println 'it.ucscFilePath == "http://octopus-explorer.com/ucsc/bigWig/"'
+			}
+			i++
+		}
+	}
+	
 	
 	def read2(){
 		println "read2"

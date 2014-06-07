@@ -12,6 +12,10 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<sec:ifLoggedIn>
+				<li><g:link class="edit" action="edit" resource="${projectInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link></li>
+				<li><g:link class="create" action="create">Create</g:link></li>
+				</sec:ifLoggedIn>
 			</ul>
 		</div>
 		<div id="show-project" class="content scaffold-show" role="main">
@@ -23,7 +27,7 @@
 			
 				<g:if test="${projectInstance?.iid}">
 				<li class="fieldcontain">
-					<span id="iid-label" class="property-label"><g:message code="project.iid.label" default="Iid" /></span>
+					<span id="iid-label" class="property-label"><g:message code="project.iid.label" default="GSM Number" /></span>
 					
 						<span class="property-value" aria-labelledby="iid-label"><g:fieldValue bean="${projectInstance}" field="iid"/></span>
 					
@@ -341,6 +345,70 @@
 					<span id="platformId-label" class="property-label"><g:message code="project.platformId.label" default="Platform Id" /></span>
 					
 						<span class="property-value" aria-labelledby="platformId-label"><g:fieldValue bean="${projectInstance}" field="platformId"/></span>
+					
+				</li>
+				</g:if>
+				
+	
+				<g:if test="${projectInstance?.browsingStatus}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.browsingStatus.label" default="Browsing Status" /></span>
+					
+						<span class="property-value" aria-labelledby="browsingStatus-label"><g:fieldValue bean="${projectInstance}" field="browsingStatus"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.ucscFilePath}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.ucscFilePath.label" default="Ucsc File Path" /></span>
+					
+						<span class="property-value" aria-labelledby="ucscFilePath-label"><g:fieldValue bean="${projectInstance}" field="ucscFilePath"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.tissue}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.tissue.label" default="Tissue" /></span>
+					
+						<span class="property-value" aria-labelledby="tissue-label"><g:fieldValue bean="${projectInstance}" field="tissue"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.antibody}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.antibody.label" default="Antibody" /></span>
+					
+						<span class="property-value" aria-labelledby="antibody-label"><g:fieldValue bean="${projectInstance}" field="antibody"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.species}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.species.label" default="Species" /></span>
+					
+						<span class="property-value" aria-labelledby="species-label"><g:fieldValue bean="${projectInstance}" field="species"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.stage}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.stage.label" default="Stage" /></span>
+					
+						<span class="property-value" aria-labelledby="stage-label"><g:fieldValue bean="${projectInstance}" field="stage"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${projectInstance?.treatment}">
+				<li class="fieldcontain">
+					<span id="platformId-label" class="property-label"><g:message code="project.treatment.label" default="Treatment" /></span>
+					
+						<span class="property-value" aria-labelledby="treatment-label"><g:fieldValue bean="${projectInstance}" field="treatment"/></span>
 					
 				</li>
 				</g:if>

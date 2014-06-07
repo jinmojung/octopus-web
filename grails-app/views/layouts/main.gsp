@@ -19,6 +19,9 @@
 		<r:layoutResources />
 	</head>
 	<body>
+	<sec:ifLoggedIn>
+	<g:link controller="logout">Logout</g:link>
+	</sec:ifLoggedIn>
 		<g:layoutBody/>
 		<r:layoutResources />
 	</body>
