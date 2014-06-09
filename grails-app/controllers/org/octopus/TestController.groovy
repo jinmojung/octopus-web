@@ -9,6 +9,7 @@ class TestController {
 	def projectService
 	def ftpDownService
 	def hubService
+	def springSecurityService
 
     def index() {
 		println "index"+params
@@ -149,6 +150,10 @@ class TestController {
 				e.printStackTrace()
 			}
 		}
+	}
+	
+	def encode(){
+		render springSecurityService.encodePassword(params.pw)
 	}
 	
 	
