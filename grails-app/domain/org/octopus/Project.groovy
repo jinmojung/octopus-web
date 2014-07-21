@@ -44,9 +44,12 @@ class Project {
 	String species
 	String stage
 	String treatment
+	String dataLevel
 	
 	
 	static hasMany = [supplementaryFiles: SupplementaryFile]
+	
+	static transients = ['dataLevel']
 
     static constraints = {
 		iid unique: true
