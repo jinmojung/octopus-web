@@ -282,7 +282,7 @@ class TestController {
 					def tissueDto = new TreeDto(text:tissue1)
 					speciesDto.children.add(tissueDto)
 					iid.each{ iid1->
-						def iidDto = new TreeDto(text:"<a href='/octopus-web/project/show/"+iid1.id+"'>$iid1.iid</a>",state:"open")
+						def iidDto = new TreeDto(text:"<a href='"+request.contextPath +"/project/show/"+iid1.id+"'>$iid1.iid</a>",state:"open")
 						tissueDto.children.add(iidDto)
 					}
 				}

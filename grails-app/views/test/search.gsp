@@ -41,6 +41,20 @@
 					$("#browsingForm" ).submit()
 				}
 	    	});
+			$("#openAll" ).click(function() {
+				$("#tt li").find("ul").css('display','block')
+			});
+			$("#closeAll" ).click(function() {
+				$("#tt li").find("ul").css('display','none')
+			});
+			$("#checkAll" ).click(function() {
+				$("#tt li").find(".tree-checkbox0").toggleClass('tree-checkbox0 tree-checkbox1');
+				$("#tt li").find(".tree-checkbox2").toggleClass('tree-checkbox2 tree-checkbox1');
+			});
+			$("#uncheckAll" ).click(function() {
+				$("#tt li").find(".tree-checkbox1").toggleClass('tree-checkbox1 tree-checkbox0');
+				$("#tt li").find(".tree-checkbox2").toggleClass('tree-checkbox2 tree-checkbox0');
+			});
 		    var docHeight = $(window).height();
 		    var footerHeight = $('#footer').height();
 		    var footerTop = $('#footer').position().top + footerHeight;
@@ -95,6 +109,12 @@ data sets related to the JAK-STAT pathway.
 				</tr>
 				<tr>
 					<td colspan="5">
+					<ul style="display: none">
+					<span id="openAll">openAll</span>
+					<span id="closeAll">closeAll</span>
+					<span id="checkAll">checkAll</span>
+					<span id="uncheckAll">uncheckAll</span>
+					</ul>
 					<ul id="tt" class="easyui-tree"  url="json?keyword=${params.keyword }" checkbox="true" style="text-align: left;">
 					</ul>
 					</td>
